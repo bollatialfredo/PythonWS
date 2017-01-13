@@ -14,6 +14,18 @@ class Empleado:
     def fullname(self):
         return '{} {}'.format(self.first, self.last)
 
+    @fullname.setter
+    def fullname(self, name):
+        first, last = name.split(' ')
+        self.first = first
+        self.last = last
+        
+    @fullname.deleter
+    def fullname(self):
+        print('Deleted name!')
+        self.first = None
+        self.last = None
+        
     def apply_raise(self):
         self.pay = int(self.pay * self.raise_amount)
 
@@ -37,7 +49,7 @@ class Empleado:
         return "Empleado('{}','{}','{}')".format(self.first, self.last, self.pay)
 
     def __str__(self):
-        return '{} - {}'.format(self.fullname(), self.email)
+        return '{} - {}'.format(self.fullname, self.email)
 
     def __add__(self, other):
         return self.pay + other.pay
@@ -60,6 +72,12 @@ class Developer(Empleado):
 emp_1 = Developer('David', 'Martin', 16400, 'Python')
 emp_2 = Empleado('Alfredo', 'Bollati', 13500)
 
-emp_1.first = 'Juan'
+print (emp_1)
 
-print(emp_1.fullname)
+emp_1.fullname = 'Juan Perez'
+
+print(emp_1)
+
+del emp_1.fullname
+
+print(emp_1)
