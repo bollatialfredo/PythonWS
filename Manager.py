@@ -23,7 +23,7 @@ class Manager(Empleado):
         for emp in self.employees:
             print('-->', emp.fullname())
 
-mg_1 = Manager('Paola', 'Dabos', 20000, [])
+mg_1 = Manager('Paula', 'Dabos', 20000, [])
 
 dev_1 = Developer('David', 'Martin', 13000, 'JavaScript')
 dev_2 = Developer('Alfredo', 'Bollati', 12000, 'Python')
