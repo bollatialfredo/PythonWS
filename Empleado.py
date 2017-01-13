@@ -29,11 +29,20 @@ class Empleado:
         if day.weekday() == 5 or day.weekday() == 6:
             return False
         return True
-    
 
-emp_1 = Empleado('David', 'Martin', 16400)
+class Developer(Empleado):
+    raise_amount = 1.10
+
+    def __init__(self, first, last, pay, prog_lang):
+        super().__init__(first, last, pay)
+        self.prog_lang = prog_lang
+
+
+emp_1 = Developer('David', 'Martin', 16400, 'Python')
 emp_2 = Empleado('Alfredo', 'Bollati', 13500)
+
+print(emp_1.prog_lang)
+
 
 import datetime
 my_date = datetime.date(2017, 1, 13)
-print(Empleado.is_workday(my_date))
