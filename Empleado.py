@@ -16,26 +16,24 @@ class Empleado:
 
     def apply_raise(self):
         self.pay = int(self.pay * self.raise_amount)
-        
+
+    @classmethod #setea el raise_amount de la clase Empleado
+    def set_raise_amount(cls, amount):
+        cls.raise_amount = amount
+    @classmethod  #crea un empleado de un string, constructor alternativo
+    def from_string(cls, emp_str):
+        first, last, pay = emp_str.split('-')
+        return cls(first, last, pay)
+    @staticmethod
+    def is_workday(day): #metodo estatico, no recibe ni clase ni instancia
+        if day.weekday() == 5 or day.weekday() == 6:
+            return False
+        return True
+    
+
 emp_1 = Empleado('David', 'Martin', 16400)
 emp_2 = Empleado('Alfredo', 'Bollati', 13500)
 
-print(emp_1.pay)
-emp_1.apply_raise()
-print(emp_1.pay)
-Empleado.raise_amount = 1.05
-print(Empleado.raise_amount)
-print(emp_1.pay)
-emp_1.apply_raise()
-print(emp_1.pay)
-emp_1.raise_amount = 1.08
-print(emp_1.raise_amount)
-print(Empleado.raise_amount)
-print(emp_2.raise_amount)
-
-print(emp_1.num_of_emp)
-
-print(Empleado.num_of_emp)
-
-#print(emp_1.fullname())
-#print(Empleado.fullname(emp_2))
+import datetime
+my_date = datetime.date(2017, 1, 13)
+print(Empleado.is_workday(my_date))
