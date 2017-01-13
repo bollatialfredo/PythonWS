@@ -30,6 +30,17 @@ class Empleado:
             return False
         return True
 
+    def __repr__(self):
+        return "Empleado('{}','{}','{}')".format(self.first, self.last, self.pay)
+
+    def __str__(self):
+        return '{} - {}'.format(self.fullname(), self.email)
+
+    def __add__(self, other):
+        return self.pay + other.pay
+    def __len__(self):
+        return len(self.fullname())
+    
 class Developer(Empleado):
     raise_amount = 1.10
 
@@ -41,8 +52,8 @@ class Developer(Empleado):
 emp_1 = Developer('David', 'Martin', 16400, 'Python')
 emp_2 = Empleado('Alfredo', 'Bollati', 13500)
 
-print(emp_1.prog_lang)
+print(repr(emp_1))
+print(str(emp_1))
 
-
-import datetime
-my_date = datetime.date(2017, 1, 13)
+print(emp_1 + emp_2)
+print (len(emp_1))
